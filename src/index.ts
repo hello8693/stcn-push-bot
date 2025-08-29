@@ -1,12 +1,15 @@
+// 首先加载环境变量
+import './config/env.js';
 import express, { Request, Response, Application } from 'express';
 import { webhookHandler } from './handlers/webhookHandler.js';
 import { qqBot } from './services/qqBot.js';
 import { testController } from './controllers/testController.js';
 import { securityConfig } from './config/security.js';
 import { securityMiddleware } from './middleware/security.js';
+import { EnvConfig } from './config/env.js';
 
 const app: Application = express();
-const PORT = process.env.PORT || 3000;
+const PORT = EnvConfig.PORT;
 
 // 中间件
 app.use(express.json({ limit: '10mb' }));
@@ -112,6 +115,9 @@ app.listen(PORT, () => {
   console.log(`🌐 服务地址: http://localhost:${PORT}`);
   console.log(`📊 健康检查: http://localhost:${PORT}/health`);
   console.log(`🔐 安全配置: http://localhost:${PORT}/security/info`);
+  
+  // 显示环境配置
+  EnvConfig.displayConfig();
   
   // 显示安全配置信息
   securityConfig.displaySecurityInfo();

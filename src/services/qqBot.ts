@@ -1,12 +1,13 @@
 import { NapCatMessage, NapCatResponse, ParsedForumMessage, ForumEventType } from '../types/index.js';
+import { EnvConfig } from '../config/env.js';
 
 class QQBot {
   private napcatUrl: string;
   private groupId: string;
 
   constructor() {
-    this.napcatUrl = process.env.NAPCAT_URL || '';
-    this.groupId = process.env.QQ_GROUP_ID || '';
+    this.napcatUrl = EnvConfig.NAPCAT_URL;
+    this.groupId = EnvConfig.QQ_GROUP_ID;
   }
 
   // 检查配置是否完整

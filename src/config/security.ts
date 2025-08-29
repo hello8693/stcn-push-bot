@@ -1,13 +1,14 @@
 import { randomBytes } from 'crypto';
+import { EnvConfig } from './env.js';
 
 class SecurityConfig {
   private webhookToken: string;
 
   constructor() {
     // 从环境变量获取或生成随机令牌
-    this.webhookToken = process.env.WEBHOOK_TOKEN || this.generateToken();
+    this.webhookToken = EnvConfig.WEBHOOK_TOKEN || this.generateToken();
     
-    if (!process.env.WEBHOOK_TOKEN) {
+    if (!EnvConfig.WEBHOOK_TOKEN) {
       console.warn('⚠️  未设置 WEBHOOK_TOKEN 环境变量，使用随机生成的令牌');
       console.warn(`🔑 当前 Webhook 令牌: ${this.webhookToken}`);
       console.warn('   建议将此令牌设置到环境变量中以保持一致性');

@@ -2,6 +2,7 @@ import { Request, Response } from 'express';
 import { qqBot } from '../services/qqBot.js';
 import { SlackWebhookMessage } from '../types/index.js';
 import { securityConfig } from '../config/security.js';
+import { EnvConfig } from '../config/env.js';
 
 class TestController {
   // 测试 QQ Bot 连接
@@ -192,7 +193,7 @@ class TestController {
     try {
       const { type } = req.params;
       const token = securityConfig.getWebhookToken();
-      const baseUrl = `http://localhost:${process.env.PORT || 3000}`;
+      const baseUrl = `http://localhost:${EnvConfig.PORT}`;
       
       const endpoints = {
         'user-post': `${baseUrl}/webhook/${token}/forum/user`,
