@@ -99,16 +99,16 @@ class TestController {
             avatar_url: "https://forum.smart-teach.cn/assets/favicon-v4ksoaxf.png",
             text: "",
             attachments: [{
-              fallback: " - TestUser",
+              fallback: " - OriginalAuthor",  // 原帖作者在 fallback 中
               color: "26de81",
               title: "在 `测试帖子标题` 中审核通过的帖子",
               title_link: "https://forum.smart-teach.cn/d/612/1",
               text: null,
               footer: "智教联盟论坛",
               fields: null,
-              author_name: "TestUser",
-              author_link: "https://forum.smart-teach.cn/u/TestUser",
-              author_icon: "https://forum.smart-teach.cn/assets/avatars/QkZ5vVgZJNzI25dY.png"
+              author_name: "AdminUser",  // 这里是审核者（管理员）
+              author_link: "https://forum.smart-teach.cn/u/AdminUser",
+              author_icon: "https://forum.smart-teach.cn/assets/avatars/admin.png"
             }]
           };
           break;

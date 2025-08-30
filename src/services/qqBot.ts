@@ -81,8 +81,13 @@ class QQBot {
 
     let message = `${emoji} 【${typeName}】\n`;
     message += `📖 标题：${parsed.title}\n`;
-    message += `👤 作者：${parsed.author}\n`;
-    
+    if (typeName === '帖子审核通过' && parsed.isApproval) {
+      message += `👤 审核人：${parsed.author}\n`;
+    }
+    else {
+      message += `👤 作者：${parsed.author}\n`;
+    }
+
     if (parsed.content && parsed.content.trim()) {
       // 简化内容，移除图片等特殊标记
       const cleanContent = this.cleanContent(parsed.content);
